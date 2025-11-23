@@ -95,9 +95,10 @@ void leerBaseConocimiento(const string& nombreFichero)
         auto r = make_shared<Regla>(rnombre, causa, consecuencia,fc);
         bc.pushRegla(r);
     }
+    archivo.close();
 }
 
-void leerBaseHechos(string nombreFichero)
+string leerBaseHechos(string nombreFichero)
 {
     ifstream archivo(nombreFichero);
 
@@ -126,13 +127,21 @@ void leerBaseHechos(string nombreFichero)
         if (!hechoAct.empty() && hechoAct.back() == RULE_DELIMITER)
             hechoAct.pop_back(); // quitar ','
         //leer factor de certidumbre
-        float fc;
-        ss >> fc;
+        string hfc;
+        ss >> hfc;
+        float fc = stof(hfc.substr(hfc.find("FC=") + 3));
 
         Hecho newHecho;
+        newHecho.insert(hechoAct);
         newHecho.setFC(fc);
         bh.insertHecho(newHecho);
     }
+    archivo >> linea;
+    string obj;
+    if(linea == "Objetivo")
+        archivo >> obj;
+    archivo.close();
+    return obj;
 }
 
 
@@ -140,7 +149,7 @@ int main(int argc, char *argv[]){
 
     cout << argv[1]<<endl;
     leerBaseConocimiento(argv[1]);
-    leerBaseHechos(argv[2]);
+    string objetivo = leerBaseHechos(argv[2]);
 
     for(auto& ract: bc.getBanco()){
         cout << ract->getNombre() << ' ';
@@ -159,4 +168,6 @@ int main(int argc, char *argv[]){
     for(auto& hact: bh.getBanco()){
         cout << hact.getPartes().front() << ", FC=" << hact.getFC()<<endl;
     }
+
+    cout << "OBJETIVO: "<< objetivo;
 }

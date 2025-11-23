@@ -1,0 +1,8 @@
+7
+R1: Si ant23a Entonces experimentado, FC=0.5
+R2: Si antMas3a Entonces experimentado, FC=0.9
+R3: Si cond23h Entonces cansado, FC=0.5
+R4: Si condMas3h Entonces cansado, FC=1
+R5: Si experimentado y acompanado Entonces causaAcc, FC=-0.5
+R6: Si cansado Entonces causaAcc, FC=0.5
+R7: Si joven o alcoholizado Entonces causaAcc, FC=0.7

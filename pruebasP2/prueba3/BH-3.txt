@@ -1,0 +1,9 @@
+6
+antMas3a, FC=1
+ant23a, FC=-1
+cond23h, FC=1
+condMas3h, FC=-1
+acompanado, FC=-1
+joven, FC=0.4
+Objetivo
+causaAcc
