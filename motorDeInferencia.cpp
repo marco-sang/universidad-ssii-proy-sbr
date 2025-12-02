@@ -1,7 +1,10 @@
 #include <algorithm>
+#include <fstream>
 #include "SBR.h"
 
 using namespace std;
+
+extern ofstream logFile;
 
 float encadenamientoHaciaAtras(Hecho meta, BH &bh, BC &bc)
 {
@@ -25,19 +28,24 @@ list<reference_wrapper<Hecho>> buscarCondiciones(shared_ptr<Regla> r, BH& base)
 }
 
 float caso1(list<reference_wrapper<Hecho>>& hechos, tipoHecho andor)
-{
+{   // hecho debe tener solo hechos simples para que se impriman bien los mensajes.
     list<reference_wrapper<Hecho>>::iterator it = hechos.begin();
     Hecho& h1 = *it;
-    //it++;
+
+    logFile << h1.getNombre();   // Salida de log
 
     while(++it != hechos.end()){
         Hecho& h2 = *it;
 
-        if(andor == conj)
+        if(andor == conj){
+            logFile << " y "; // Salida de log
             h1.setFC(min(h1.getFC(), h2.getFC()));
-        else
+        }
+        else{
+            logFile << " o "; // Salida de log
             h1.setFC(max(h1.getFC(), h2.getFC()));
-
+        }
+        logFile << h2.getNombre(); // Salida de log
     }
     return h1.getFC();
 }
@@ -56,7 +64,7 @@ float caso2(float a, float b)
                 return a + b*(1+a);
             }
         else if (b == 0.0f) {
-            // Solo b es cero → depende del signo de a
+            // Solo b es cero depende del signo de a
             if (a > 0)
                 return a + b*(1-a);
             else
@@ -81,15 +89,19 @@ void despacharRegla(shared_ptr<Regla> regla, BH& baseH, size_t allConditions)
     if(hechos.empty())
         return;
     
-    // Aquí puede ir la un print
+    logFile << "Propagando " << regla->getNombre()<< ":\n"; // Salida de log
     shared_ptr<Hecho> rCondicion = regla->getCausa(); // saca la condición de la regla para modificarla después
     switch (regla->getCausa()->getTipo())
     {
     case conj:
+        logFile << "\tCaso 1: ";    //salida log
         rCondicion->setFC(caso1(hechos, conj));
+        logFile << ", FC=" << rCondicion->getFC() << endl;  // salida log
         break;
     case disy:
+        logFile << "\tCaso 1: ";    //salida log
         rCondicion->setFC(caso1(hechos, disy));
+        logFile << ", FC=" << rCondicion->getFC() << endl;  // salida log
         break;
     default:
         Hecho& hOri = hechos.front();
@@ -99,11 +111,12 @@ void despacharRegla(shared_ptr<Regla> regla, BH& baseH, size_t allConditions)
     propagado.insert(regla->getConsecuente()->getNombre()); // Se saca el hecho derecho de la regla
     // caso 3
     propagado.setFC(regla->getFC() * max(float(0), rCondicion->getFC()));
-    
+    logFile << "\tCaso 3: "<< propagado.getNombre()<< ", FC="<< propagado.getFC()<< endl ;    // salida de log
     if(baseH.existeHecho(propagado)){   // Se aplica el caso 2 si el hecho ya existe
         //caso 2
         auto& hechoEnBase = baseH.getHecho(propagado.getNombre());
         hechoEnBase.setFC(caso2(propagado.getFC(), hechoEnBase.getFC() ));
+        logFile << "Caso 2: "<< hechoEnBase.getNombre()<< ", FC="<< hechoEnBase.getFC()<< endl;
     }
     else
         baseH.insertHecho(propagado);

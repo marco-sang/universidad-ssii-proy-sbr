@@ -12,6 +12,7 @@ using namespace std;
 
 BC bc; //base de conocimiento;
 BH bh; //base de hecho;
+ofstream logFile("SBR-log.txt");
 
 regex p_si("^si$", regex_constants::icase);
 regex p_entonces("^entonces$", regex_constants::icase);
@@ -146,13 +147,19 @@ string leerBaseHechos(string nombreFichero)
 
 
 int main(int argc, char *argv[]){
-
-    cout << argv[1]<<endl;
+    if(!logFile.is_open())
+        cout << "ERROR: Archivo de salida no abierto.\n";
+    logFile << "Base de Conocimiento: " << argv[1]<<endl;
+    logFile << "Base de Hechos : " << argv[2]<<"\n\n";
     leerBaseConocimiento(argv[1]);
     string objetivo = leerBaseHechos(argv[2]);
+    
     Hecho meta;
     meta.insert(objetivo);
-    cout << encadenamientoHaciaAtras(meta, bh, bc) << endl;
+    logFile << "Calculando "<< objetivo<< endl;
+    float solucion = encadenamientoHaciaAtras(meta, bh, bc);
+    logFile << "FC("<< objetivo<< ")="<< solucion<< endl;
+    logFile.close();
 
 /*    for(auto& ract: bc.getBanco()){
         cout << ract->getNombre() << ' ';
