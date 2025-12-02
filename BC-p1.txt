@@ -1,0 +1,4 @@
+3
+R1: Si ll_w Entonces A, FC=0.5
+R2: Si ll_g y s Entonces A, FC=0.9
+R3: Si A Entonces r, FC=0.99

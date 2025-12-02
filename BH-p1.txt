@@ -1,0 +1,6 @@
+3
+ll_w, FC=1
+ll_g, FC=1
+s, FC=0.5
+Objetivo
+r

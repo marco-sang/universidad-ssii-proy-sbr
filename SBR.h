@@ -19,10 +19,22 @@ class Hecho {
 
     public:
 		Hecho(tipoHecho tipoH = simple) { tipo = tipoH;}
+
         /*
         * Obtiene los subhechos que componen este hecho
         */
 		list<string>& getPartes() {return partes;}
+
+        /*
+        * Obtiene el nombre de este hecho.
+        * Retorna una cadena vacía si el hecho no es simple.
+        */
+       string getNombre()
+       {
+        if(this->tipo != simple)
+            return "";
+        return partes.front();
+       }
 
         /*
         * Retorna el factor de certidumbre de este hecho.
@@ -76,8 +88,8 @@ class Regla{
         shared_ptr<Hecho> getCausa() {return causa;}
         shared_ptr<Hecho> getConsecuente() {return consecuente;}
         string getNombre() {return nombre;}
-        float getFc() {return fc;}
-        void setFc(float n) {fc = n;}
+        float getFC() {return fc;}
+        void setFC(float n) {fc = n;}
 
         /*
         * Método que regresa true si la causa de esta regla es igual al
@@ -168,15 +180,15 @@ class BH {
 
 /*
 * Aplica las reglas de la base de conocimiento bc usando la información de la
-* base de hechos bc para tratar de obtener el hecho objetivo meta.
+* base de hechos bh para tratar de obtener el hecho objetivo meta.
 */
 bool verificar(Hecho meta, BH &bh, BC &bc);
 
 /*
 * Indica si el hecho meta es alcanzable con la base de hechos bh y la base de
-* conocimiento bc actuales.
+* conocimiento bc actuales. Regresa el factor de certidumbre en caso de que sí se pueda.
 */
-bool encadenamientoHaciaAtras(Hecho meta, BH &bh, BC &bc);
+float encadenamientoHaciaAtras(Hecho meta, BH &bh, BC &bc);
 
 /*
 * Si la regla aplica, guarda el hecho conseguido con esta regla en la base de hechos bh .
@@ -188,7 +200,12 @@ void despacharRegla(shared_ptr<Regla> regla, BH& bh, size_t allConditions);
 /*
 * Optiene de la base de hechos base los hechos que necesita la regla para aplicarse. 
 */
-unique_ptr<list<Hecho&>> buscarCondiciones(shared_ptr<Regla> r, BH& base);
+list<reference_wrapper<Hecho>> buscarCondiciones(shared_ptr<Regla> r, BH& base);
 
+/*
+* Aplica el caso 1 de combinación de factores de certeza sobre la lista hechos.
+* andor indica qué operación usar en los hechos.
+*/
+float caso1(list<reference_wrapper<Hecho>>& hechos, tipoHecho andor);
 
 #endif

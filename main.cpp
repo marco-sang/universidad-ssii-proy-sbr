@@ -150,8 +150,11 @@ int main(int argc, char *argv[]){
     cout << argv[1]<<endl;
     leerBaseConocimiento(argv[1]);
     string objetivo = leerBaseHechos(argv[2]);
+    Hecho meta;
+    meta.insert(objetivo);
+    cout << encadenamientoHaciaAtras(meta, bh, bc) << endl;
 
-    for(auto& ract: bc.getBanco()){
+/*    for(auto& ract: bc.getBanco()){
         cout << ract->getNombre() << ' ';
         for(auto& hact: ract->getCausa()->getPartes()){
             cout << hact << ' ';
@@ -161,7 +164,7 @@ int main(int argc, char *argv[]){
                 cout<< 'o' << ' ';
         }
         cout << "entonces " << ract->getConsecuente()->getPartes().front()<< ", ";
-        cout << "FC="<<ract->getFc()<<endl;
+        cout << "FC="<<ract->getFC()<<endl;
     }
 
     cout << argv[2]<< endl;
@@ -170,4 +173,7 @@ int main(int argc, char *argv[]){
     }
 
     cout << "OBJETIVO: "<< objetivo;
+*/
+
+
 }

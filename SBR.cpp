@@ -65,7 +65,7 @@ Hecho& BH::getHecho(string nombreHecho)
     for(auto& hact: this->banco){
         if(hact.getTipo() != simple)
             continue;
-        if(hact.getPartes().front() == nombreHecho)
+        if(hact.getNombre() == nombreHecho)
             return hact;
     }
 
@@ -77,9 +77,9 @@ bool BH::existeHecho(Hecho& h)
     if(h.getTipo() != simple)
         return false;
 
-    string hnombre = h.getPartes().front();
+    string hnombre = h.getNombre();
     for(auto& hact: this->banco){
-        if(hact.getPartes().front() == hnombre)
+        if(hact.getNombre() == hnombre)
             return true;
     }
     return false;

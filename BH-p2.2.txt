@@ -1,0 +1,7 @@
+4
+c, FC=0.6
+h, FC=0.5
+b, FC=0.3
+p, FC=0.6
+Objetivo
+v
