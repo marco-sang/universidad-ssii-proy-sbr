@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <fstream>
 #include "SBR.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ list<reference_wrapper<Hecho>> buscarCondiciones(shared_ptr<Regla> r, BH& base)
 }
 
 float caso1(list<reference_wrapper<Hecho>>& hechos, tipoHecho andor)
-{   // hecho debe tener solo hechos simples para que se impriman bien los mensajes.
+{   // hechos debe tener solo hechos simples para que se impriman bien los mensajes.
     list<reference_wrapper<Hecho>>::iterator it = hechos.begin();
     Hecho& h1 = *it;
 
@@ -64,32 +65,34 @@ float caso2(float a, float b)
                 return a + b*(1+a);
             }
         else if (b == 0.0f) {
-            // Solo b es cero depende del signo de a
             if (a > 0)
                 return a + b*(1-a);
             else
-                return a + b*(1+a);  
+                return a + b*(1+a);
         }
     }
-    
+
     else if (a > 0 && b > 0) {
         return a + b*(1-a);
     }
     /*Si no sale por los casos anterires entonces es porque los dos elementos son menores que 0*/
     return a + b*(1+a);
-}    
+}
 
 
 void despacharRegla(shared_ptr<Regla> regla, BH& baseH, size_t allConditions)
 {   // Si la regla tiene una causa compuesta pero no es disyunción ni dispone de todas las condiciones, entonces no se aplica.
-    if(allConditions < regla->getCausa()->getPartes().size() && regla->getCausa()->getTipo() != disy)
+    if(allConditions < regla->getCausa()->getPartes().size() && regla->getCausa()->getTipo() != disy){
+        logFile << "     --No aplicable\n";
         return;
-    
+    }
     auto hechos = buscarCondiciones(regla, baseH);  // recolecta las condiciones existentes en la base de datos.
-    if(hechos.empty())
+    if(hechos.empty()){
+        logFile << "     --No aplicable\n";
         return;
-    
-    logFile << "Propagando " << regla->getNombre()<< ":\n"; // Salida de log
+    }
+    logFile << "     --Aplicable\n";
+    logFile << " Propagando " << regla->getNombre()<< "(FC="<< regla->getFC() << "):\n"; // Salida de log
     shared_ptr<Hecho> rCondicion = regla->getCausa(); // saca la condición de la regla para modificarla después
     switch (regla->getCausa()->getTipo())
     {
@@ -125,33 +128,38 @@ void despacharRegla(shared_ptr<Regla> regla, BH& baseH, size_t allConditions)
 
 bool verificar(Hecho meta, BH &bh, BC &bc)
 {
-    //bool verificado = false;
-
-    // 1. ¿Meta ya está en la base de hechos?
-    if (bh.existeHecho(meta))
+    // 1. verificar si bh ya contiene la meta
+    if (bh.existeHecho(meta)){
+        logFile << "Hecho "<< meta.getNombre()<< " "<< "encontrado (FC="<< bh.getHecho(meta.getNombre()).getFC()<< ")\n";
         return true;
-
+    }
     // 2. Obtener reglas cuyos consecuentes igualan la meta
     auto reglasCC = bc.reglasConConsecuente(meta);  // CC
+    logFile << "Añadiendo ";
+    printReglas(*reglasCC, logFile);
+    logFile << " al conjunto conflicto.\n";
 
-    // 3. Mientras haya reglas y no verificado
+    // 3. Mientras haya reglas en CC
     while (!reglasCC->empty())
     {
-        // Tomar una regla (Resolver(CC))
         auto regla = reglasCC->front();
         reglasCC->pop_front();  // Eliminar(R,CC)
+        logFile << "Buscado antecedentes de "<< regla->getNombre()<< endl;
 
         // 4. Extraer nuevos antecedentes
-        auto causa = regla->getCausa();    // es un Hecho complejo (conj o disy)
-        list<string> nuevasMetas = causa->getPartes(); // ExtraerAntecedentes(R)
+        auto causa = regla->getCausa();
+        list<string> nuevasMetas = causa->getPartes(); // conjunto de hechos que necesita la regla actual.
+        logFile << "Añadiendo {";
+        printStrList(nuevasMetas, logFile);
+        logFile << "} a Nuevas Metas\n";
 
-        int verificados = 0;  // asumimos éxito, pero puede fallar luego
+        int verificados = 0;  // cuenta de los antecedentes encontrados en bh
 
         // 5. Para cada nueva meta, verificarla recursivamente
         while (!nuevasMetas.empty())
         {
             string nombreMeta = nuevasMetas.front();
-            nuevasMetas.pop_front();   // Eliminar(Nmet, NuevasMetas)
+            nuevasMetas.pop_front();
 
             Hecho subMeta;
             subMeta.insert(nombreMeta);   // construir Hecho simple
@@ -161,10 +169,9 @@ bool verificar(Hecho meta, BH &bh, BC &bc)
                 verificados++;
         }
 
-        // 6. Insertamos las acciones de la regla en la base de hecho si aplica.
+        // 6. Insertamos las acciones de la regla en la base de hechos si aplica.
+        logFile << "Despachando "<< regla->getNombre()<< endl;
         despacharRegla(regla, bh, (size_t)verificados);
-        /*if (verificado)
-            bh.insertHecho(meta);*/
     }
 
     return bh.existeHecho(meta);

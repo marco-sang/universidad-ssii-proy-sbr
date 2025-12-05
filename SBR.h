@@ -85,10 +85,29 @@ class Regla{
             this->fc = fc;
         }
 
+        /*
+        * Retorna un puntero al hecho que representa la causa de esta regla.
+        */
         shared_ptr<Hecho> getCausa() {return causa;}
+
+        /*
+        * Retorna un puntero al hecho que representa la consecuencia de esta regla.
+        */
         shared_ptr<Hecho> getConsecuente() {return consecuente;}
+
+        /*
+        * Retorna el nombre que identifica esta regla.
+        */
         string getNombre() {return nombre;}
+
+        /*
+        * Retorna el factor de certidumbre de esta regla.
+        */
         float getFC() {return fc;}
+
+        /*
+        * Establece el factor de certidumbre de esta regla
+        */
         void setFC(float n) {fc = n;}
 
         /*
@@ -105,12 +124,19 @@ class Regla{
 
 };
 
+/*
+* Clase para representar la base de conocimiento.
+*/
 class BC {
 	private:
 		list<shared_ptr<Regla>> banco;
 
 	public:
+	    /*
+	    * Retorna una lista con punteros a las reglas almacenadas en la base de conocimiento.
+	    */
 	    list<shared_ptr<Regla>>& getBanco() {return banco;}
+
 	    /*
 		* Inserta una nueva regla en la BC.
 		*/
@@ -155,7 +181,7 @@ class BH {
     public:
 
         list<Hecho>& getBanco() {return banco;}
-            
+
         /*
         * Inserta un nuevo hecho en la BH.
         */
@@ -176,7 +202,7 @@ class BH {
 };
 
 
-///// METODOS DEL MOTOR DE INFERENCIA /////
+///// MÉTODOS DEL MOTOR DE INFERENCIA /////
 
 /*
 * Aplica las reglas de la base de conocimiento bc usando la información de la
@@ -198,7 +224,7 @@ float encadenamientoHaciaAtras(Hecho meta, BH &bh, BC &bc);
 void despacharRegla(shared_ptr<Regla> regla, BH& bh, size_t allConditions);
 
 /*
-* Optiene de la base de hechos base los hechos que necesita la regla para aplicarse. 
+* Optiene de la base de hechos "base" los hechos que necesita la regla "r" para aplicarse.
 */
 list<reference_wrapper<Hecho>> buscarCondiciones(shared_ptr<Regla> r, BH& base);
 
@@ -207,5 +233,11 @@ list<reference_wrapper<Hecho>> buscarCondiciones(shared_ptr<Regla> r, BH& base);
 * andor indica qué operación usar en los hechos.
 */
 float caso1(list<reference_wrapper<Hecho>>& hechos, tipoHecho andor);
+
+/*
+* Aplica el caso 2 de combinación de factores de certeza.
+* Recibe dos factores de certeza para hacer el calculo.
+*/
+float caso2(float a, float b);
 
 #endif

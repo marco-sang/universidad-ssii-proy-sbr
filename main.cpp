@@ -153,34 +153,13 @@ int main(int argc, char *argv[]){
     logFile << "Base de Hechos : " << argv[2]<<"\n\n";
     leerBaseConocimiento(argv[1]);
     string objetivo = leerBaseHechos(argv[2]);
-    
+
     Hecho meta;
     meta.insert(objetivo);
-    logFile << "Calculando "<< objetivo<< endl;
+    logFile << "Calculando "<< objetivo<< "\n-------------------------------------\n";
     float solucion = encadenamientoHaciaAtras(meta, bh, bc);
+    logFile <<"\n-------------------------------------\n";
     logFile << "FC("<< objetivo<< ")="<< solucion<< endl;
     logFile.close();
-
-/*    for(auto& ract: bc.getBanco()){
-        cout << ract->getNombre() << ' ';
-        for(auto& hact: ract->getCausa()->getPartes()){
-            cout << hact << ' ';
-            if(ract->getCausa()->getTipo() == conj)
-                cout<< 'y' << ' ';
-            else if(ract->getCausa()->getTipo() == disy)
-                cout<< 'o' << ' ';
-        }
-        cout << "entonces " << ract->getConsecuente()->getPartes().front()<< ", ";
-        cout << "FC="<<ract->getFC()<<endl;
-    }
-
-    cout << argv[2]<< endl;
-    for(auto& hact: bh.getBanco()){
-        cout << hact.getPartes().front() << ", FC=" << hact.getFC()<<endl;
-    }
-
-    cout << "OBJETIVO: "<< objetivo;
-*/
-
 
 }

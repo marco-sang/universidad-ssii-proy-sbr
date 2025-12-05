@@ -8,7 +8,7 @@ bool Regla::isCausa(Hecho& supCausa)
     int partes = this->causa->getPartes().size();
     if(partes == 0)
         return false;
-    
+
     for(auto&& act: supCausa.getPartes()){      //recorre cada una de las partes del hecho buscando coincidencia con las partes de la causa de esta regla.
         for(auto&& ract: causa->getPartes()){
             if(act != ract)
@@ -24,11 +24,11 @@ bool Regla::isCausa(Hecho& supCausa)
 bool Regla::isConsecuencia(Hecho& supCons)
 {
     int cuenta = 0;
-    int partes = this->consecuente->getPartes().size();  
+    int partes = this->consecuente->getPartes().size();
     if(partes == 0)
         return false;
-    
-    for(auto&& act: supCons.getPartes()){   //recorre cada una de las partes del hecho buscando coincidencia con las partes de la causa de esta regla.
+
+    for(auto&& act: supCons.getPartes()){   //recorre cada una de las partes del hecho buscando coincidencia con las partes de la consecuencia de esta regla.
         for(auto&& ract: consecuente->getPartes()){
             if(act != ract)
                 continue;
