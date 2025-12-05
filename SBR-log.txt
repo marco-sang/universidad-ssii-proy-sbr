@@ -1,66 +1,35 @@
-Base de Conocimiento: pruebasP2/prueba3/BC-3.txt
-Base de Hechos : pruebasP2/prueba3/BH-3.txt
+Base de Conocimiento: BC-p1.txt
+Base de Hechos : BH-p1.txt
 
-Calculando causaAcc
+Calculando r
 -------------------------------------
-Añadiendo R5, R6, R7 al conjunto conflicto.
-Buscado antecedentes de R5
-Añadiendo {acompanado, experimentado} a Nuevas Metas
-Hecho acompanado encontrado (FC=-1)
+Buscando reglas para calcular r
+Añadiendo R3 al conjunto conflicto.
+Buscado antecedentes de R3
+Añadiendo {A} a Nuevas Metas
+Buscando reglas para calcular A
 Añadiendo R1, R2 al conjunto conflicto.
 Buscado antecedentes de R1
-Añadiendo {ant23a} a Nuevas Metas
-Hecho ant23a encontrado (FC=-1)
+Añadiendo {ll_w} a Nuevas Metas
+Hecho ll_w encontrado (FC=1)
 Despachando R1
      --Aplicable
  Propagando R1(FC=0.5):
-	Caso 3: experimentado, FC=0
+	Caso 3: A, FC=0.5
 Buscado antecedentes de R2
-Añadiendo {antMas3a} a Nuevas Metas
-Hecho antMas3a encontrado (FC=1)
+Añadiendo {ll_g, s} a Nuevas Metas
+Hecho ll_g encontrado (FC=1)
+Hecho s encontrado (FC=0.5)
 Despachando R2
      --Aplicable
  Propagando R2(FC=0.9):
-	Caso 3: experimentado, FC=0.9
-Caso 2: experimentado, FC=0.9
-Despachando R5
-     --Aplicable
- Propagando R5(FC=-0.5):
-	Caso 1: acompanado y experimentado, FC=-1
-	Caso 3: causaAcc, FC=-0
-Buscado antecedentes de R6
-Añadiendo {cansado} a Nuevas Metas
-Añadiendo R3, R4 al conjunto conflicto.
-Buscado antecedentes de R3
-Añadiendo {cond23h} a Nuevas Metas
-Hecho cond23h encontrado (FC=1)
+	Caso 1: ll_g y s, FC=0.5
+	Caso 3: A, FC=0.45
+Caso 2: A, FC=0.725
 Despachando R3
      --Aplicable
- Propagando R3(FC=0.5):
-	Caso 3: cansado, FC=0.5
-Buscado antecedentes de R4
-Añadiendo {condMas3h} a Nuevas Metas
-Hecho condMas3h encontrado (FC=-1)
-Despachando R4
-     --Aplicable
- Propagando R4(FC=1):
-	Caso 3: cansado, FC=0
-Caso 2: cansado, FC=0.5
-Despachando R6
-     --Aplicable
- Propagando R6(FC=0.5):
-	Caso 3: causaAcc, FC=0.25
-Caso 2: causaAcc, FC=0.25
-Buscado antecedentes de R7
-Añadiendo {alcoholizado, joven} a Nuevas Metas
-Añadiendo  al conjunto conflicto.
-Hecho joven encontrado (FC=0.4)
-Despachando R7
-     --Aplicable
- Propagando R7(FC=0.7):
-	Caso 1: joven, FC=0.4
-	Caso 3: causaAcc, FC=0.28
-Caso 2: causaAcc, FC=0.46
+ Propagando R3(FC=0.99):
+	Caso 3: r, FC=0.71775
 
 -------------------------------------
-FC(causaAcc)=0.46
+FC(r)=0.71775

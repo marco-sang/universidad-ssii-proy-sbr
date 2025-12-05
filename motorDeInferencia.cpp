@@ -134,11 +134,16 @@ bool verificar(Hecho meta, BH &bh, BC &bc)
         return true;
     }
     // 2. Obtener reglas cuyos consecuentes igualan la meta
+    logFile << "Buscando reglas para calcular "<< meta.getNombre()<< endl;
     auto reglasCC = bc.reglasConConsecuente(meta);  // CC
-    logFile << "Añadiendo ";
-    printReglas(*reglasCC, logFile);
-    logFile << " al conjunto conflicto.\n";
-
+    
+    if(reglasCC->empty())
+        logFile << "--No hay reglas para calcular "<< meta.getNombre()<< endl;
+    else{
+        logFile << "Añadiendo ";
+        printReglas(*reglasCC, logFile);
+        logFile << " al conjunto conflicto.\n";
+    }
     // 3. Mientras haya reglas en CC
     while (!reglasCC->empty())
     {
