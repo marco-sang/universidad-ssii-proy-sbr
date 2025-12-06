@@ -1,0 +1,45 @@
+Base de Conocimiento: BC-1.txt
+Base de Hechos : BH-1.txt
+
+Calculando h1
+-------------------------------------
+Buscando reglas para calcular h1
+Añadiendo R1, R2 al conjunto conflicto.
+Buscado antecedentes de R1
+Añadiendo {h2, h3} a Nuevas Metas
+Hecho h2 encontrado (FC=0.3)
+Buscando reglas para calcular h3
+Añadiendo R3, R4 al conjunto conflicto.
+Buscado antecedentes de R3
+Añadiendo {h5, h6} a Nuevas Metas
+Hecho h5 encontrado (FC=0.6)
+Hecho h6 encontrado (FC=0.9)
+Despachando R3
+     --Aplicable
+ Propagando R3(FC=0.7):
+	Caso 1: h5 y h6, FC=0.6
+	Caso 3: h3, FC=0.42
+Buscado antecedentes de R4
+Añadiendo {h7} a Nuevas Metas
+Hecho h7 encontrado (FC=0.5)
+Despachando R4
+     --Aplicable
+ Propagando R4(FC=-0.5):
+	Caso 3: h3, FC=-0.25
+Caso 2: h3, FC=0.226667
+Despachando R1
+     --Aplicable
+ Propagando R1(FC=0.5):
+	Caso 1: h2 o h3, FC=0.3
+	Caso 3: h1, FC=0.15
+Buscado antecedentes de R2
+Añadiendo {h4} a Nuevas Metas
+Hecho h4 encontrado (FC=0.6)
+Despachando R2
+     --Aplicable
+ Propagando R2(FC=1):
+	Caso 3: h1, FC=0.6
+Caso 2: h1, FC=0.66
+
+-------------------------------------
+FC(h1)=0.66
