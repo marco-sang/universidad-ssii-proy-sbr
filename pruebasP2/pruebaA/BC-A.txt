@@ -1,0 +1,7 @@
+6
+R1: Si aceLento Entonces combNoEnri, FC=0.8
+R2: Si fugaI Entonces combNoEnri, FC=0.5
+R3: Si humoVerde Entonces aciteDerr, FC=0.99
+R4: Si aciteDerr y motorFrio Entonces inyeccionMal, FC=0.6
+R5: Si combNoEnri o condFlujoParpadea Entonces faltaEnergia, FC=0.7
+R6: Si motorSuena y motorCaliente y humoBrillante Entonces inyeccionMal, FC=0.99

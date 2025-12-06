@@ -1,0 +1,10 @@
+7
+humoVerde, FC=1
+motorCaliente, FC=1
+motorFrio, FC=-1
+aceLento, FC=0.4
+motorSuena, FC=0.2
+condFlujoParpadea, FC=1
+humoBrillante, FC=-1
+Objetivo
+faltaEnergia
