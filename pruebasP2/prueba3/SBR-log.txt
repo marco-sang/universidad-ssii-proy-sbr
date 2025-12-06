@@ -1,35 +1,70 @@
-Base de Conocimiento: pruebasP2\prueba2\BC-2.txt
-Base de Hechos : pruebasP2\prueba2\BH-2.2.txt
+Base de Conocimiento: pruebasP2\prueba3\BC-3.txt
+Base de Hechos : pruebasP2\prueba3\BH-3.txt
 
-Calculando ganaRM
+Calculando causaAcc
 -------------------------------------
-Buscando reglas para calcular ganaRM
-Añadiendo R2, R3, R5 al conjunto conflicto.
+Buscando reglas para calcular causaAcc
+Añadiendo R5, R6, R7 al conjunto conflicto.
+Buscado antecedentes de R5
+Añadiendo {acompanado, experimentado} a Nuevas Metas
+Hecho acompanado encontrado (FC=-1)
+Buscando reglas para calcular experimentado
+Añadiendo R1, R2 al conjunto conflicto.
+Buscado antecedentes de R1
+Añadiendo {ant23a} a Nuevas Metas
+Hecho ant23a encontrado (FC=-1)
+Despachando R1
+     --Aplicable
+ Propagando R1(FC=0.5):
+	Caso 3: experimentado, FC=0
 Buscado antecedentes de R2
-Añadiendo {arbMod} a Nuevas Metas
-Hecho arbMod encontrado (FC=1)
+Añadiendo {antMas3a} a Nuevas Metas
+Hecho antMas3a encontrado (FC=1)
 Despachando R2
      --Aplicable
- Propagando R2(FC=0.75):
-	Caso 3: ganaRM, FC=0.75
-Buscado antecedentes de R3
-Añadiendo {publicoMayEST} a Nuevas Metas
-Hecho publicoMayEST encontrado (FC=0.65)
-Despachando R3
-     --Aplicable
- Propagando R3(FC=-0.4):
-	Caso 3: ganaRM, FC=-0.26
-Caso 2: ganaRM, FC=0.662162
-Buscado antecedentes de R5
-Añadiendo {les2pivRM, visitanteRM} a Nuevas Metas
-Hecho les2pivRM encontrado (FC=1)
-Hecho visitanteRM encontrado (FC=1)
+ Propagando R2(FC=0.9):
+	Caso 3: experimentado, FC=0.9
+Caso 2: experimentado, FC=0.9
 Despachando R5
      --Aplicable
- Propagando R5(FC=-0.1):
-	Caso 1: les2pivRM y visitanteRM, FC=1
-	Caso 3: ganaRM, FC=-0.1
-Caso 2: ganaRM, FC=0.624625
+ Propagando R5(FC=-0.5):
+	Caso 1: acompanado y experimentado, FC=-1
+	Caso 3: causaAcc, FC=-0
+Buscado antecedentes de R6
+Añadiendo {cansado} a Nuevas Metas
+Buscando reglas para calcular cansado
+Añadiendo R3, R4 al conjunto conflicto.
+Buscado antecedentes de R3
+Añadiendo {cond23h} a Nuevas Metas
+Hecho cond23h encontrado (FC=1)
+Despachando R3
+     --Aplicable
+ Propagando R3(FC=0.5):
+	Caso 3: cansado, FC=0.5
+Buscado antecedentes de R4
+Añadiendo {condMas3h} a Nuevas Metas
+Hecho condMas3h encontrado (FC=-1)
+Despachando R4
+     --Aplicable
+ Propagando R4(FC=1):
+	Caso 3: cansado, FC=0
+Caso 2: cansado, FC=0.5
+Despachando R6
+     --Aplicable
+ Propagando R6(FC=0.5):
+	Caso 3: causaAcc, FC=0.25
+Caso 2: causaAcc, FC=0.25
+Buscado antecedentes de R7
+Añadiendo {alcoholizado, joven} a Nuevas Metas
+Buscando reglas para calcular alcoholizado
+--No hay reglas para calcular alcoholizado
+Hecho joven encontrado (FC=0.4)
+Despachando R7
+     --Aplicable
+ Propagando R7(FC=0.7):
+	Caso 1: joven, FC=0.4
+	Caso 3: causaAcc, FC=0.28
+Caso 2: causaAcc, FC=0.46
 
 -------------------------------------
-FC(ganaRM)=0.624625
+FC(causaAcc)=0.46
