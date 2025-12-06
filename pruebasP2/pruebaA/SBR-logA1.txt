@@ -1,0 +1,38 @@
+Base de Conocimiento: pruebasP2\pruebaA\BC-A.txt
+Base de Hechos : pruebasP2\pruebaA\BH-A.1.txt
+
+Calculando inyeccionMal
+-------------------------------------
+Buscando reglas para calcular inyeccionMal
+Añadiendo R4, R6 al conjunto conflicto.
+Buscado antecedentes de R4
+Añadiendo {aciteDerr, motorFrio} a Nuevas Metas
+Buscando reglas para calcular aciteDerr
+Añadiendo R3 al conjunto conflicto.
+Buscado antecedentes de R3
+Añadiendo {humoVerde} a Nuevas Metas
+Hecho humoVerde encontrado (FC=1)
+Despachando R3
+     --Aplicable
+ Propagando R3(FC=0.99):
+	Caso 3: aciteDerr, FC=0.99
+Hecho motorFrio encontrado (FC=-1)
+Despachando R4
+     --Aplicable
+ Propagando R4(FC=0.6):
+	Caso 1: aciteDerr y motorFrio, FC=-1
+	Caso 3: inyeccionMal, FC=0
+Buscado antecedentes de R6
+Añadiendo {humoBrillante, motorCaliente, motorSuena} a Nuevas Metas
+Hecho humoBrillante encontrado (FC=-1)
+Hecho motorCaliente encontrado (FC=1)
+Hecho motorSuena encontrado (FC=0.2)
+Despachando R6
+     --Aplicable
+ Propagando R6(FC=0.99):
+	Caso 1: humoBrillante y motorCaliente y motorSuena, FC=-1
+	Caso 3: inyeccionMal, FC=0
+Caso 2: inyeccionMal, FC=0
+
+-------------------------------------
+FC(inyeccionMal)=0
