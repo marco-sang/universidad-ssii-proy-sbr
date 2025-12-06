@@ -1,0 +1,33 @@
+Base de Conocimiento: pruebasP2\prueba2\BC-2.txt
+Base de Hechos : pruebasP2\prueba2\BH-2.1.txt
+
+Calculando ganaEST
+-------------------------------------
+Buscando reglas para calcular ganaEST
+Añadiendo R1, R4, R6 al conjunto conflicto.
+Buscado antecedentes de R1
+Añadiendo {arbMod} a Nuevas Metas
+Hecho arbMod encontrado (FC=1)
+Despachando R1
+     --Aplicable
+ Propagando R1(FC=0.4):
+	Caso 3: ganaEST, FC=0.4
+Buscado antecedentes de R4
+Añadiendo {publicoEqui} a Nuevas Metas
+Hecho publicoEqui encontrado (FC=0.35)
+Despachando R4
+     --Aplicable
+ Propagando R4(FC=-0.55):
+	Caso 3: ganaEST, FC=-0.1925
+Caso 2: ganaEST, FC=0.256966
+Buscado antecedentes de R6
+Añadiendo {les2pivEST} a Nuevas Metas
+Hecho les2pivEST encontrado (FC=1)
+Despachando R6
+     --Aplicable
+ Propagando R6(FC=-0.6):
+	Caso 3: ganaEST, FC=-0.6
+Caso 2: ganaEST, FC=-0.461667
+
+-------------------------------------
+FC(ganaEST)=-0.461667
