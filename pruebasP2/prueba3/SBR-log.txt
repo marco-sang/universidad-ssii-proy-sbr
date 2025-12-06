@@ -1,0 +1,35 @@
+Base de Conocimiento: pruebasP2\prueba2\BC-2.txt
+Base de Hechos : pruebasP2\prueba2\BH-2.2.txt
+
+Calculando ganaRM
+-------------------------------------
+Buscando reglas para calcular ganaRM
+Añadiendo R2, R3, R5 al conjunto conflicto.
+Buscado antecedentes de R2
+Añadiendo {arbMod} a Nuevas Metas
+Hecho arbMod encontrado (FC=1)
+Despachando R2
+     --Aplicable
+ Propagando R2(FC=0.75):
+	Caso 3: ganaRM, FC=0.75
+Buscado antecedentes de R3
+Añadiendo {publicoMayEST} a Nuevas Metas
+Hecho publicoMayEST encontrado (FC=0.65)
+Despachando R3
+     --Aplicable
+ Propagando R3(FC=-0.4):
+	Caso 3: ganaRM, FC=-0.26
+Caso 2: ganaRM, FC=0.662162
+Buscado antecedentes de R5
+Añadiendo {les2pivRM, visitanteRM} a Nuevas Metas
+Hecho les2pivRM encontrado (FC=1)
+Hecho visitanteRM encontrado (FC=1)
+Despachando R5
+     --Aplicable
+ Propagando R5(FC=-0.1):
+	Caso 1: les2pivRM y visitanteRM, FC=1
+	Caso 3: ganaRM, FC=-0.1
+Caso 2: ganaRM, FC=0.624625
+
+-------------------------------------
+FC(ganaRM)=0.624625
