@@ -1,35 +1,33 @@
 Base de Conocimiento: pruebasP2\prueba2\BC-2.txt
-Base de Hechos : pruebasP2\prueba2\BH-2.2.txt
+Base de Hechos : pruebasP2\prueba2\BH-2.1.txt
 
-Calculando ganaRM
+Calculando ganaEST
 -------------------------------------
-Buscando reglas para calcular ganaRM
-Añadiendo R2, R3, R5 al conjunto conflicto.
-Buscado antecedentes de R2
+Buscando reglas para calcular ganaEST
+Añadiendo R1, R4, R6 al conjunto conflicto.
+Buscando antecedentes de R1
 Añadiendo {arbMod} a Nuevas Metas
 Hecho arbMod encontrado (FC=1)
-Despachando R2
+Despachando R1
      --Aplicable
- Propagando R2(FC=0.75):
-	Caso 3: ganaRM, FC=0.75
-Buscado antecedentes de R3
-Añadiendo {publicoMayEST} a Nuevas Metas
-Hecho publicoMayEST encontrado (FC=0.65)
-Despachando R3
+ Propagando R1(FC=0.4):
+	Caso 3: ganaEST, FC=0.4
+Buscando antecedentes de R4
+Añadiendo {publicoEqui} a Nuevas Metas
+Hecho publicoEqui encontrado (FC=0.35)
+Despachando R4
      --Aplicable
- Propagando R3(FC=-0.4):
-	Caso 3: ganaRM, FC=-0.26
-Caso 2: ganaRM, FC=0.662162
-Buscado antecedentes de R5
-Añadiendo {les2pivRM, visitanteRM} a Nuevas Metas
-Hecho les2pivRM encontrado (FC=1)
-Hecho visitanteRM encontrado (FC=1)
-Despachando R5
+ Propagando R4(FC=-0.55):
+	Caso 3: ganaEST, FC=-0.1925
+Caso 2: ganaEST, FC=0.256966
+Buscando antecedentes de R6
+Añadiendo {les2pivEST} a Nuevas Metas
+Hecho les2pivEST encontrado (FC=1)
+Despachando R6
      --Aplicable
- Propagando R5(FC=-0.1):
-	Caso 1: les2pivRM y visitanteRM, FC=1
-	Caso 3: ganaRM, FC=-0.1
-Caso 2: ganaRM, FC=0.624625
+ Propagando R6(FC=-0.6):
+	Caso 3: ganaEST, FC=-0.6
+Caso 2: ganaEST, FC=-0.461667
 
 -------------------------------------
-FC(ganaRM)=0.624625
+FC(ganaEST)=-0.461667
