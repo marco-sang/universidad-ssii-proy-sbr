@@ -136,7 +136,7 @@ bool verificar(Hecho meta, BH &bh, BC &bc)
     // 2. Obtener reglas cuyos consecuentes igualan la meta
     logFile << "Buscando reglas para calcular "<< meta.getNombre()<< endl;
     auto reglasCC = bc.reglasConConsecuente(meta);  // CC
-    
+
     if(reglasCC->empty())
         logFile << "--No hay reglas para calcular "<< meta.getNombre()<< endl;
     else{
@@ -149,7 +149,7 @@ bool verificar(Hecho meta, BH &bh, BC &bc)
     {
         auto regla = reglasCC->front();
         reglasCC->pop_front();  // Eliminar(R,CC)
-        logFile << "Buscado antecedentes de "<< regla->getNombre()<< endl;
+        logFile << "Buscando antecedentes de "<< regla->getNombre()<< endl;
 
         // 4. Extraer nuevos antecedentes
         auto causa = regla->getCausa();
