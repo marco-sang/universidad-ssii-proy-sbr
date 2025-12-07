@@ -5,19 +5,19 @@ Calculando causaAcc
 -------------------------------------
 Buscando reglas para calcular causaAcc
 Añadiendo R5, R6, R7 al conjunto conflicto.
-Buscado antecedentes de R5
+Buscando antecedentes de R5
 Añadiendo {acompanado, experimentado} a Nuevas Metas
 Hecho acompanado encontrado (FC=-1)
 Buscando reglas para calcular experimentado
 Añadiendo R1, R2 al conjunto conflicto.
-Buscado antecedentes de R1
+Buscando antecedentes de R1
 Añadiendo {ant23a} a Nuevas Metas
 Hecho ant23a encontrado (FC=-1)
 Despachando R1
      --Aplicable
  Propagando R1(FC=0.5):
 	Caso 3: experimentado, FC=0
-Buscado antecedentes de R2
+Buscando antecedentes de R2
 Añadiendo {antMas3a} a Nuevas Metas
 Hecho antMas3a encontrado (FC=1)
 Despachando R2
@@ -30,18 +30,18 @@ Despachando R5
  Propagando R5(FC=-0.5):
 	Caso 1: acompanado y experimentado, FC=-1
 	Caso 3: causaAcc, FC=-0
-Buscado antecedentes de R6
+Buscando antecedentes de R6
 Añadiendo {cansado} a Nuevas Metas
 Buscando reglas para calcular cansado
 Añadiendo R3, R4 al conjunto conflicto.
-Buscado antecedentes de R3
+Buscando antecedentes de R3
 Añadiendo {cond23h} a Nuevas Metas
 Hecho cond23h encontrado (FC=1)
 Despachando R3
      --Aplicable
  Propagando R3(FC=0.5):
 	Caso 3: cansado, FC=0.5
-Buscado antecedentes de R4
+Buscando antecedentes de R4
 Añadiendo {condMas3h} a Nuevas Metas
 Hecho condMas3h encontrado (FC=-1)
 Despachando R4
@@ -54,7 +54,7 @@ Despachando R6
  Propagando R6(FC=0.5):
 	Caso 3: causaAcc, FC=0.25
 Caso 2: causaAcc, FC=0.25
-Buscado antecedentes de R7
+Buscando antecedentes de R7
 Añadiendo {alcoholizado, joven} a Nuevas Metas
 Buscando reglas para calcular alcoholizado
 --No hay reglas para calcular alcoholizado
