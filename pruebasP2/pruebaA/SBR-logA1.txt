@@ -1,38 +1,33 @@
 Base de Conocimiento: pruebasP2\pruebaA\BC-A.txt
-Base de Hechos : pruebasP2\pruebaA\BH-A.1.txt
+Base de Hechos : pruebasP2\pruebaA\BH-A.2.txt
 
-Calculando inyeccionMal
+Calculando faltaEnergia
 -------------------------------------
-Buscando reglas para calcular inyeccionMal
-Añadiendo R4, R6 al conjunto conflicto.
-Buscado antecedentes de R4
-Añadiendo {aciteDerr, motorFrio} a Nuevas Metas
-Buscando reglas para calcular aciteDerr
-Añadiendo R3 al conjunto conflicto.
-Buscado antecedentes de R3
-Añadiendo {humoVerde} a Nuevas Metas
-Hecho humoVerde encontrado (FC=1)
-Despachando R3
+Buscando reglas para calcular faltaEnergia
+Añadiendo R5 al conjunto conflicto.
+Buscando antecedentes de R5
+Añadiendo {combNoEnri, condFlujoParpadea} a Nuevas Metas
+Buscando reglas para calcular combNoEnri
+Añadiendo R1, R2 al conjunto conflicto.
+Buscando antecedentes de R1
+Añadiendo {aceLento} a Nuevas Metas
+Hecho aceLento encontrado (FC=0.4)
+Despachando R1
      --Aplicable
- Propagando R3(FC=0.99):
-	Caso 3: aciteDerr, FC=0.99
-Hecho motorFrio encontrado (FC=-1)
-Despachando R4
+ Propagando R1(FC=0.8):
+	Caso 3: combNoEnri, FC=0.32
+Buscando antecedentes de R2
+Añadiendo {fugaI} a Nuevas Metas
+Buscando reglas para calcular fugaI
+--No hay reglas para calcular fugaI
+Despachando R2
+     --No aplicable
+Hecho condFlujoParpadea encontrado (FC=1)
+Despachando R5
      --Aplicable
- Propagando R4(FC=0.6):
-	Caso 1: aciteDerr y motorFrio, FC=-1
-	Caso 3: inyeccionMal, FC=0
-Buscado antecedentes de R6
-Añadiendo {humoBrillante, motorCaliente, motorSuena} a Nuevas Metas
-Hecho humoBrillante encontrado (FC=-1)
-Hecho motorCaliente encontrado (FC=1)
-Hecho motorSuena encontrado (FC=0.2)
-Despachando R6
-     --Aplicable
- Propagando R6(FC=0.99):
-	Caso 1: humoBrillante y motorCaliente y motorSuena, FC=-1
-	Caso 3: inyeccionMal, FC=0
-Caso 2: inyeccionMal, FC=0
+ Propagando R5(FC=0.7):
+	Caso 1: combNoEnri o condFlujoParpadea, FC=1
+	Caso 3: faltaEnergia, FC=0.7
 
 -------------------------------------
-FC(inyeccionMal)=0
+FC(faltaEnergia)=0.7
